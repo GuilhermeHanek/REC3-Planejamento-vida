@@ -1,74 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Planejamento - Guilherme</title>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{background:#0a0f1c;color:#e5e7eb;font-family:Arial;padding:20px;}
-  .container{max-width:800px;margin:auto;}
-  h1{text-align:center;color:#60a5fa;margin-bottom:10px;}
-  .sub{text-align:center;color:#9ca3af;margin-bottom:30px;font-size:14px;}
-  .card{background:#111827;border-left:4px solid #3b82f6;padding:18px;margin-bottom:18px;border-radius:10px;}
-  h2{color:#93c5fd;margin-bottom:5px;font-size:20px;}
-  .meta{font-size:11px;color:#60a5fa;margin-bottom:8px;}
-  .desc{color:#ccc;font-size:13px;margin-bottom:12px;}
-  .timer{background:#1e293b;color:#22c55e;font-size:18px;font-weight:bold;text-align:center;padding:8px;border-radius:8px;font-family:Courier;}
-  footer{text-align:center;color:#6b7280;margin-top:30px;font-size:12px;}
+  :root { --p: #00f2ff; --s: #7000ff; --bg: #050505; }
+  body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; display: flex; justify-content: center; padding: 50px; }
+  .card { 
+    background: rgba(255,255,255,0.03); 
+    border: 1px solid rgba(255,255,255,0.1); 
+    border-radius: 15px; 
+    padding: 25px; 
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+  }
+  .card:hover { border-color: var(--p); transform: translateY(-5px); }
+  .timer { font-family: 'JetBrains Mono', monospace; color: var(--p); display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; }
+  .unit-label { font-size: 0.6rem; color: var(--s); text-transform: uppercase; }
 </style>
-</head>
-<body>
-
-<div class="container">
-  <h1>📅 Guilherme - Metas</h1>
-  <div class="sub">⚡ disciplina + consistência ⚡</div>
-
-  <div class="card">
-    <h2>🚗 CNH</h2>
-    <div class="meta">🎯 1 ano</div>
-    <p class="desc">Independência e mobilidade</p>
-    <div class="timer" id="t1"></div>
-  </div>
-
-  <div class="card">
-    <h2>💰 Estabilidade</h2>
-    <div class="meta">🎯 6 anos</div>
-    <p class="desc">Viver tranquilo e investir</p>
-    <div class="timer" id="t2"></div>
-  </div>
-
-  <div class="card">
-    <h2>🏠 Casa Própria</h2>
-    <div class="meta">🎯 10 anos</div>
-    <p class="desc">O lar dos sonhos</p>
-    <div class="timer" id="t3"></div>
-  </div>
-
-  <footer>Guilherme | fé no processo</footer>
-</div>
-
-<script>
-function t(id,a){
-  let e=document.getElementById(id);
-  let f=new Date();
-  f.setFullYear(f.getFullYear()+a);
-  setInterval(()=>{
-    let g=new Date();
-    let d=f-g;
-    if(d<=0){e.innerHTML="✅ conquistado!";return;}
-    let s=Math.floor(d/1000)%60;
-    let m=Math.floor(d/1000/60)%60;
-    let h=Math.floor(d/1000/60/60)%24;
-    let ds=Math.floor(d/1000/60/60/24);
-    let aa=Math.floor(ds/365);
-    let dr=ds%365;
-    e.innerHTML=aa+"a "+dr+"d "+h+"h "+m+"m "+s+"s";
-  },1000);
-}
-t("t1",1);
-t("t2",6);
-t("t3",10);
-</script>
-
-</body>
-</html>
