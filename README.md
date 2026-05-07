@@ -1,7 +1,5 @@
 # Planejamento de Vida - Guilherme
 
-Projeto simples com contadores regressivos para os objetivos pessoais de Guilherme.
-
 ## Metas
 
 | Objetivo | Prazo |
