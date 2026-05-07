@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planejamento de Vida | Guilherme</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{background:linear-gradient(135deg,#0a0f1c,#0f172a);color:#e5e7eb;font-family:'Segoe UI',Arial;padding:40px 20px;min-height:100vh;}
+    .container{max-width:900px;margin:0 auto;}
+    h1{text-align:center;font-size:42px;background:linear-gradient(135deg,#60a5fa,#a78bfa);background-clip:text;-webkit-background-clip:text;color:transparent;margin-bottom:10px;}
+    .subtitle{text-align:center;color:#9ca3af;margin-bottom:40px;border-bottom:2px dotted #3b82f6;display:inline-block;width:auto;margin-left:auto;margin-right:auto;padding-bottom:8px;}
+    .card{background:#111827;border-left:5px solid #3b82f6;border-radius:16px;padding:24px;margin-bottom:24px;transition:all 0.3s ease;position:relative;overflow:hidden;}
+    .card:hover{transform:scale(1.02) translateY(-5px);box-shadow:0 15px 35px rgba(59,130,246,0.4);border-left-width:8px;border-left-color:#a78bfa;}
+    .card::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(59,130,246,0.2),transparent);transition:left 0.6s;}
+    .card:hover::before{left:100%;}
+    .card::after{content:"✨";position:absolute;bottom:10px;right:15px;font-size:24px;opacity:0;transition:all 0.3s;}
+    .card:hover::after{opacity:0.5;transform:rotate(15deg) scale(1.2);}
+    h2{color:#93c5fd;font-size:24px;margin-bottom:8px;transition:transform 0.3s;}
+    .card:hover h2{transform:translateX(5px);color:#c4b5fd;}
+    .meta{display:inline-block;background:#1e293b;color:#60a5fa;font-size:12px;font-weight:bold;padding:4px 12px;border-radius:20px;margin-bottom:12px;transition:all 0.3s;}
+    .card:hover .meta{background:#3b82f6;color:white;transform:scale(1.05);}
+    .desc{color:#d1d5db;line-height:1.5;margin-bottom:16px;font-size:14px;}
+    .timer{background:#1e293b;color:#22c55e;font-size:20px;font-weight:bold;font-family:'Courier New',monospace;text-align:center;padding:14px;border-radius:12px;transition:all 0.3s;position:relative;}
+    .card:hover .timer{background:#0f172a;box-shadow:0 0 20px rgba(34,197,94,0.5);color:#4ade80;}
+    footer{text-align:center;color:#6b7280;margin-top:40px;padding-top:20px;border-top:1px solid #1f2937;}
+    @media(max-width:768px){h1{font-size:32px;}.timer{font-size:16px;}}
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>📅 Planejamento de Vida</h1>
+  <div style="text-align:center;"><p class="subtitle">⚡ Os objetivos de Guilherme ⚡</p></div>
+
+  <!-- CNH - 1 ano -->
+  <div class="card">
+    <h2>🚗 Carteira de Habilitação</h2>
+    <div class="meta">🎯 Meta: 1 ano</div>
+    <p class="desc">Conquistar a CNH para ter independência, mobilidade e liberdade para ir e vir sem depender de ninguém.</p>
+    <div class="timer" id="timerCnh"></div>
+  </div>
+
+  <!-- Estabilidade Financeira - 6 anos -->
+  <div class="card">
+    <h2>💰 Estabilidade Financeira</h2>
+    <div class="meta">🎯 Meta: 6 anos</div>
+    <p class="desc">Construir uma vida financeira sólida com reserva de emergência, investimentos e tranquilidade para realizar sonhos.</p>
+    <div class="timer" id="timerEstabilidade"></div>
+  </div>
+
+  <!-- Casa Própria - 10 anos -->
+  <div class="card">
+    <h2>🏠 Casa Própria</h2>
+    <div class="meta">🎯 Meta: 10 anos</div>
+    <p class="desc">Realizar o sonho do lar próprio, um lugar seguro e aconchegante para chamar de meu.</p>
+    <div class="timer" id="TimerCasa"></div>
+  </div>
+
+  <footer>🚀 Projeto desenvolvido por Guilherme | Disciplina e consistência</footer>
+</div>
+
+<script>
+  function iniciarTimer(id, anos) {
+    const elemento = document.getElementById(id);
+    const dataAlvo = new Date();
+    dataAlvo.setFullYear(dataAlvo.getFullYear() + anos);
+
+    function atualizar() {
+      const agora = new Date();
+      const diff = dataAlvo - agora;
+
+      if (diff <= 0) {
+        elemento.innerHTML = "🎉 OBJETIVO ALCANÇADO! 🎉";
+        return;
+      }
+
+      const segundos = Math.floor(diff / 1000) % 60;
+      const minutos = Math.floor(diff / 1000 / 60) % 60;
+      const horas = Math.floor(diff / 1000 / 60 / 60) % 24;
+      const dias = Math.floor(diff / 1000 / 60 / 60 / 24);
+      const anosRestantes = Math.floor(dias / 365);
+      const diasRestantes = dias % 365;
+
+      elemento.innerHTML = `⏱️ ${anosRestantes} ano${anosRestantes !== 1 ? 's' : ''}, ${diasRestantes} dia${diasRestantes !== 1 ? 's' : ''}, ${horas.toString().padStart(2, '0')}h ${minutos.toString().padStart(2, '0')}m ${segundos.toString().padStart(2, '0')}s`;
+    }
+
+    atualizar();
+    setInterval(atualizar, 1000);
+  }
+
+  iniciarTimer("timerCnh", 1);
+  iniciarTimer("timerEstabilidade", 6);
+  iniciarTimer("TimerCasa", 10);
+</script>
+</body>
+</html>
